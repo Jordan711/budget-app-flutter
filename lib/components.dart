@@ -325,6 +325,20 @@ class DrawerExpense extends HookConsumerWidget {
           ),
           elevation: 20.0,
         ),
+        SizedBox(height: 30),
+        MaterialButton(
+          onPressed: () async {
+            await viewModelProvider.deleteAccount(context);
+          },
+          child: OpenSans(text: "Delete Account", size: 20.0, color: Colors.red),
+          color: Colors.black,
+          height: 50.0,
+          minWidth: 200.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5.0),
+          ),
+          elevation: 20.0,
+        ),
         SizedBox(height: 20.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

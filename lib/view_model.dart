@@ -28,6 +28,8 @@ class ViewModel extends ChangeNotifier {
   double budgetLeft = 0;
   var logger = Logger();
 
+  bool isLoading = true;
+
   Stream<User?> get authStateChange => _auth.authStateChanges();
   void toggleObscure() {
     isObscure = !isObscure;
@@ -54,10 +56,15 @@ class ViewModel extends ChangeNotifier {
       BuildContext context, String email, String password) async {
     await _auth
         .createUserWithEmailAndPassword(email: email, password: password)
-        .then((value) => logger.d("Registration Successful"))
-        .onError((error, stackTrace) {
+        .then((value) {
+      logger.d("Registration Successful");
+      DialogBox(context, "Registration Success! Welcome ${email}");
+    }).onError((error, stackTrace) {
       logger.d("Registration Error: $error");
-      DialogBox(context, "Registration Unsuccessful: " + error.toString().replaceAll(RegExp('\\[.*?\\]'), ""));
+      DialogBox(
+          context,
+          "Registration Unsuccessful: " +
+              error.toString().replaceAll(RegExp('\\[.*?\\]'), ""));
     });
   }
 
@@ -68,7 +75,10 @@ class ViewModel extends ChangeNotifier {
         .then((value) => logger.d("Login Successful"))
         .onError((error, stackTrace) {
       logger.d("Login Error: $error");
-      DialogBox(context, "Login Unsuccessful: " + error.toString().replaceAll(RegExp('\\[.*?\\]'), ""));
+      DialogBox(
+          context,
+          "Login Unsuccessful: " +
+              error.toString().replaceAll(RegExp('\\[.*?\\]'), ""));
     });
   }
 
@@ -100,8 +110,82 @@ class ViewModel extends ChangeNotifier {
     });
   }
 
+  Future<void> deleteAccount(BuildContext context) async {
+    await showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Delete User Account'),
+            content: const SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  Text(
+                      'Warning! All your data and account will be permanently deleted, are you sure?'),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: const Text('Yes'),
+                onPressed: () async {
+                  await userCollection
+                      .doc(_auth.currentUser!.uid)
+                      .collection("expenses")
+                      .get()
+                      .then((snapshot) {
+                    for (DocumentSnapshot ds in snapshot.docs) {
+                      ds.reference.delete();
+                    }
+                  });
+
+                  await userCollection
+                      .doc(_auth.currentUser!.uid)
+                      .collection("income")
+                      .get()
+                      .then((snapshot) {
+                    for (DocumentSnapshot ds in snapshot.docs) {
+                      ds.reference.delete();
+                    }
+                  });
+
+                  Navigator.of(context).pop();
+                },
+              ),
+              TextButton(
+                child: const Text('Cancel'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
+    await _auth.currentUser!.delete().then((value) async {
+      _resetState();
+      await _auth.signOut();
+      isLoading = true;
+    }).onError((error, stackTrace) {
+      logger.d("Registration Error: $error");
+      DialogBox(
+          context,
+          "Account Deletion Unsuccessful: " +
+              error.toString().replaceAll(RegExp('\\[.*?\\]'), ""));
+    });
+  }
+
+  void _resetState() {
+    expenses = []; // Clear expenses data
+    incomes = []; // Clear income data
+    totalExpense = 0;
+    totalIncome = 0;
+    budgetLeft = 0;
+    notifyListeners(); // Notify listeners to update the UI
+  }
+
   Future<void> logout() async {
+    _resetState();
     await _auth.signOut();
+    isLoading = true;
   }
 
   // Database
