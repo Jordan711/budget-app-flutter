@@ -230,8 +230,13 @@ class RegisterAndLogin extends HookConsumerWidget {
             width: 150.0,
             child: MaterialButton(
               onPressed: () async {
-                await viewModelProvider.createUserWithEmailAndPassword(
-                    context, _emailField.text, _passwordField.text);
+                await viewModelProvider
+                    .createUserWithEmailAndPassword(
+                        context, _emailField.text, _passwordField.text)
+                    .then((value) {
+                  _emailField.clear();
+                  _passwordField.clear();
+                });
               },
               splashColor: Colors.grey,
               color: Colors.black,
@@ -251,8 +256,13 @@ class RegisterAndLogin extends HookConsumerWidget {
             width: 150.0,
             child: MaterialButton(
                 onPressed: () async {
-                  await viewModelProvider.signInWithEmailAndPassword(
-                      context, _emailField.text, _passwordField.text);
+                  await viewModelProvider
+                      .signInWithEmailAndPassword(
+                          context, _emailField.text, _passwordField.text)
+                      .then((value) {
+                    _emailField.clear();
+                    _passwordField.clear();
+                  });
                 },
                 child: OpenSans(text: "Login", size: 25.0, color: Colors.white),
                 splashColor: Colors.grey,
@@ -330,7 +340,8 @@ class DrawerExpense extends HookConsumerWidget {
           onPressed: () async {
             await viewModelProvider.deleteAccount(context);
           },
-          child: OpenSans(text: "Delete Account", size: 20.0, color: Colors.red),
+          child:
+              OpenSans(text: "Delete Account", size: 20.0, color: Colors.red),
           color: Colors.black,
           height: 50.0,
           minWidth: 200.0,
