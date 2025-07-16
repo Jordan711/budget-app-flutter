@@ -36,6 +36,14 @@ class ViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  String get userEmail {
+    if (_auth.currentUser != null && _auth.currentUser!.email != null) {
+      return _auth.currentUser!.email!;
+    } else {
+      return ''; 
+    }
+  }
+
   void calculate() {
     totalExpense = 0;
     totalIncome = 0;

@@ -23,7 +23,7 @@ class ExpenseViewWeb extends HookConsumerWidget {
             iconTheme: IconThemeData(color: Colors.white, size: 30.0),
             backgroundColor: Colors.black,
             centerTitle: true,
-            title: Poppins(text: "Dashboard", size: 20.0, color: Colors.white),
+            title: Poppins(text: "Dashboard - ${viewModelProvider.userEmail}", size: 20.0, color: Colors.white),
             actions: [
               IconButton(
                   onPressed: () async {
