@@ -12,7 +12,7 @@ class LoginViewWeb extends HookConsumerWidget {
     return SafeArea(
       child: Scaffold(
           body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
@@ -26,7 +26,7 @@ class LoginViewWeb extends HookConsumerWidget {
               children: [
                 SizedBox(height: deviceHeight / 5.5),
                 Image.asset("assets/logo.png",
-                    fit: BoxFit.contain, width: 200.0),
+                    fit: BoxFit.contain, width: 250.0),
 
                 SizedBox(height: 40.0),
                 // Email
