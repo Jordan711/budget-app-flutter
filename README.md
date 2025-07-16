@@ -1,7 +1,8 @@
-# budget_app_starting
+# Budget App
 
-Welcome to the Budget App initial project to help you learn better! This app is a hands-on project from the Flutter course presented by Coding Liquids. It's designed to provide an intuitive budget tracking experience for users and offer a comprehensive introduction to Flutter development for students.
+Welcome to the Budget App! This app is a hands-on project from the Flutter course presented by Coding Liquids. This is done as a part of a project from the 
+- ["Complete Flutter Guide 2024: Build Android, iOS, and Web apps" by Sagnik Bhattacharya](https://www.udemy.com/course/flutter-the-guide-to-build-android-ios-and-web-apps/)
 
-## Instructions: 
-1. Connect with your credentials of Firebase from the lecture "Connect Firebase to Flutter project using CLI"
-2. The app will show a blank screen, so code along with the video and finally your code will start working.
+In addition to what was taught during the tutorial, I will also be adding my own features and making bug fixes as needed. Stay tuned!
+
+Credits to Sagnik Bhattacharya for the initial starter code and the images!
