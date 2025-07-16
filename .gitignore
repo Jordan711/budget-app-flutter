@@ -1,0 +1,75 @@
+# Firebase-related files (in any project folder)
+**/firebase_options.dart
+**/google-services.json
+**/GoogleService-Info.plist
+**/firebase_app_id_file.json
+
+# Flutter/Dart-specific
+**/.dart_tool/
+**/.packages
+**/.pub-cache/
+**/build/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.melos_tool/
+
+# Android
+**/android/.gradle/
+**/android/app/build/
+**/android/build/
+**/*.iml
+**/.gradle
+**/local.properties
+
+# iOS
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Runner.xcworkspace/
+**/ios/build/
+**/*.xcworkspace
+**/*.xcuserstate
+
+# Web
+**/web/.dart_tool/
+**/web/build/
+
+# Windows
+**/windows/build/
+**/windows/.dart_tool/
+
+# Linux
+**/linux/build/
+**/linux/.dart_tool/
+
+# macOS
+**/macos/build/
+**/macos/.dart_tool/
+
+# IDE files (VS Code, IntelliJ, etc.)
+**/.idea/
+**/.vscode/
+**/*.iml
+
+# Optional: secrets or key files
+**/*.keystore
+**/*.jks
+**/*.pem
+**/*.p12
+**/*.key
+**/.env
+
+# Miscellaneous system files
+**/.DS_Store
+
+# Log and temporary files
+**/*.log
+**/*.lock
+**/*.tmp
+**/*.bak
+**/*.swp
+**/firebase-debug.log
+**/firebase-debug.*
+**/.firebase/
+**/firebase.json
