@@ -453,15 +453,15 @@ class TotalCalculation extends HookConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Poppins(
-                text: viewModelProvider.budgetLeft.toString(),
+                text: "\$ " + viewModelProvider.budgetLeft.toStringAsFixed(2),
                 size: size,
                 color: Colors.white),
             Poppins(
-                text: viewModelProvider.totalExpense.toString(),
+                text: "\$ " + viewModelProvider.totalExpense.toStringAsFixed(2),
                 size: size,
                 color: Colors.white),
             Poppins(
-                text: viewModelProvider.totalIncome.toString(),
+                text: "\$ " + viewModelProvider.totalIncome.toStringAsFixed(2),
                 size: size,
                 color: Colors.white),
           ],

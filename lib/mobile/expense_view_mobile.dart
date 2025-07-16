@@ -90,7 +90,7 @@ class ExpenseViewMobile extends HookConsumerWidget {
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: Poppins(
-                                              text: viewModelProvider
+                                              text: "\$ " + viewModelProvider
                                                   .expenses[index].amount,
                                               size: 12.0),
                                         ),
@@ -134,7 +134,7 @@ class ExpenseViewMobile extends HookConsumerWidget {
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: Poppins(
-                                              text: viewModelProvider
+                                              text: "\$ " + viewModelProvider
                                                   .incomes[index].amount,
                                               size: 12.0),
                                         ),
